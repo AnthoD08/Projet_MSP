@@ -11,16 +11,8 @@
 <body>
 
     <?php include('includes/navbar.html'); ?>
-
-    <div class="slider">
-        <img src="images/bibliotheque.jpg" class="slider-background" alt="" />
-        <div class="slider-content">
-            <h1>Bibliothèque de Baillac</h1>
-          
-        </div>
-    </div>
-
-
+    
+ 
 
 </body>
 
