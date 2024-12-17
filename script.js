@@ -89,10 +89,9 @@ function startScanner() {
         xhr.onload = function() {
 
             if (xhr.status === 200) {
-                window.location.href = "test2.php";
+                window.location.href = "test/" + result.codeResult.code;
             } else {
-                document.getElementById('message').innerText = "Identifiant ou mot de passe invalide"
-                document.getElementById('message').classList.add('erreur')
+                document.getElementById('message').innerText = "Aucun code détécté"
             }
 
         };
