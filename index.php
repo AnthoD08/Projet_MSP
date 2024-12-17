@@ -12,14 +12,16 @@ if (isset($maRoute[0])) {
             include("./php/accueil.php");
             break;
 
-        case "":
+        case "retours":
+            include("./php/retours.php");
+            break;
+
         case "emprunts":
             include("./php/emprunts.php");
             break;
 
-        case "":
-        case "retours":
-            include("./php/retours.php");
+        case "profil":
+            include("./php/profil.php");
             break;
     }
 }
