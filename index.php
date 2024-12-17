@@ -23,5 +23,10 @@ if (isset($maRoute[0])) {
         case "profil":
             include("./php/profil.php");
             break;
+
+            
+        case "deconnexion":
+            include("./php/deconnexion.php");
+            break;
     }
 }

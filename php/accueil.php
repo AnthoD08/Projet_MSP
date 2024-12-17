@@ -20,12 +20,10 @@
     // Assurez-vous que la connexion PDO utilise le mode exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Redirection si l'utilisateur est déjà connecté
-    // if (isset($_SESSION['identifiant'])) {
-    //     echo "Utilisateur déjà connecté, redirection vers le profil.<br>";  // Débogage
-    //     header("Location: profil");  // Redirection vers le profil si déjà connecté
-    //     exit();
-    // }
+
+    ?>
+
+    <?php
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -54,8 +52,8 @@
                         ]);
 
                         // Enregistrement des données utilisateur dans la session
-                        // $_SESSION['identifiant'] = $user['identifiant'];
-                        // $_SESSION['id_utilisateur'] = $user['id_utilisateur'];
+                        $_SESSION['identifiant'] = $user['identifiant'];
+                        $_SESSION['id_utilisateur'] = $user['id_utilisateur'];
 
                         // Message de débogage
                         echo "Connexion réussie, redirection vers le profil...<br>";
