@@ -20,20 +20,19 @@
     // Assurez-vous que la connexion PDO utilise le mode exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
+    // Vérifier si le cookie "identifiant" existe pour pré-remplir le champ
+    $identifiant = isset($_COOKIE['identifiant']) ? $_COOKIE['identifiant'] : '';
     ?>
 
     <?php
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $identifiant = htmlspecialchars($_POST['inputName']);
         $password = htmlspecialchars($_POST['inputPassword']);
+        $remember = isset($_POST['remember']) ? true : false;
 
-        // Vérification des champs non vides
         if (!empty($identifiant) && !empty($password)) {
             try {
-                // Préparation et exécution de la requête pour récupérer l'utilisateur
                 $query = "SELECT * FROM utilisateurs WHERE identifiant = :identifiant";
                 $stmt = $pdo->prepare($query);
                 $stmt->execute(['identifiant' => $identifiant]);
@@ -42,7 +41,6 @@
 
                 if ($user) {
                     if (password_verify($password, $user['mot_de_passe'])) {
-                        // Sécurisation de la session
                         session_regenerate_id(true);
                         session_set_cookie_params([
                             'lifetime' => 86400, // 24 heures
@@ -55,28 +53,30 @@
                         $_SESSION['identifiant'] = $user['identifiant'];
                         $_SESSION['id_utilisateur'] = $user['id_utilisateur'];
 
-                        // Message de débogage
-                        echo "Connexion réussie, redirection vers le profil...<br>";
+                        // Enregistrer l'identifiant dans un cookie si l'option est cochée
+                        if ($remember) {
+                            setcookie('identifiant', $identifiant, time() + (86400 * 30), "/"); // 30 jours
+                        } else {
+                            setcookie('identifiant', "", time() - 3600, "/"); // Supprimer le cookie
+                        }
 
                         // Redirection vers la page de profil après la connexion réussie
-                        header("location: profil");
+                        header("Location: profil");
                         exit();
                     } else {
-
-                        echo "<p class='text-center'>Le pseudo ou le mot de passe que vous avez saisi est incorrect. Veuillez réessayer.</p>";
+                        echo "<p class='text-center text-red-600'>Le pseudo ou le mot de passe est incorrect.</p>";
                     }
                 } else {
-                    echo '<p class="text-center">Le pseudo ou le mot de passe que vous avez saisi est incorrect. Veuillez réessayer.</p>';
+                    echo "<p class='text-center text-red-600'>Le pseudo ou le mot de passe est incorrect.</p>";
                 }
             } catch (PDOException $e) {
-                echo "<p class='text-center'>Erreur de base de données : " . $e->getMessage() . "</p>";
+                echo "<p class='text-center text-red-600'>Erreur de base de données : " . $e->getMessage() . "</p>";
             }
         } else {
-            echo '<p class="text-center">Veuillez entrer un identifiant et un mot de passe.</p>';
+            echo "<p class='text-center text-red-600'>Veuillez entrer un identifiant et un mot de passe.</p>";
         }
     }
     ?>
-
 
     <div class="slider">
         <img src="images/bibliotheque.jpg" class="slider-background" alt="" />
@@ -90,26 +90,34 @@
                 <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     <form class="space-y-6" action="" method="POST">
                         <div>
-                            <label for="Pseudo" class="block text-sm/6 font-medium text-white">Identifiant</label>
+                            <label for="Pseudo" class="block text-sm font-medium text-white">Identifiant</label>
                             <div class="mt-2">
-                                <input type="text" name="inputName" id="pseudo" autocomplete="pseudo" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                <input type="text" name="inputName" id="pseudo" value="<?php echo $identifiant; ?>" autocomplete="pseudo" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm">
                             </div>
                         </div>
 
                         <div>
-                            <label for="password" class="block text-sm/6 font-medium text-white">Mot de passe</label>
+                            <label for="password" class="block text-sm font-medium text-white">Mot de passe</label>
                             <div class="mt-2">
-                                <input type="password" name="inputPassword" id="password" autocomplete="current-password" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                <input type="password" name="inputPassword" id="password" autocomplete="current-password" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm">
                             </div>
                         </div>
 
+                        <!-- Case à cocher pour mémoriser l'identifiant -->
+                        <div class="flex items-center">
+                            <input id="remember" name="remember" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="remember" class="ml-2 block text-sm text-white">Mémoriser l'identifiant</label>
+                        </div>
+
                         <div>
-                            <button type="submit" class="flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">Se connecter</button>
+                            <button type="submit" class="flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">Se connecter</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 </body>
+
 </html>
