@@ -1,0 +1,33 @@
+/* In order to place the tracking correctly */
+canvas.drawing, canvas.drawingBuffer {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+body{
+    margin: 1em;
+}
+h1, table{
+    text-align: center;
+    transform: translateY(60%);
+}
+table, tr, td{
+    border: 3px solid black;
+    border-collapse: collapse;
+}
+
+table tbody tr:nth-child(odd) td {
+    background-color: #EFEFEF;
+}
+
+#back{
+    border: 1px solid black;
+    text-align: left !important;
+    padding: 1em;
+    display: block;
+    width: fit-content;
+    border-radius: 15px;
+    background-color: gray;
+    color: white;
+    text-decoration: none;
+}
