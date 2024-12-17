@@ -1,11 +1,10 @@
-/* In order to place the tracking correctly */
+*{
+    margin: 0;
+}
 canvas.drawing, canvas.drawingBuffer {
     position: absolute;
-    left: 0;
-    top: 0;
-}
-body{
-    margin: 1em;
+    left: 0px;
+    top: 0px;
 }
 h1, table{
     text-align: center;
@@ -14,6 +13,7 @@ h1, table{
 table, tr, td{
     border: 3px solid black;
     border-collapse: collapse;
+    margin: 1.2em;
 }
 
 table tbody tr:nth-child(odd) td {
@@ -29,5 +29,20 @@ table tbody tr:nth-child(odd) td {
     border-radius: 15px;
     background-color: gray;
     color: white;
+    text-decoration: none;
+    margin: 1em;
+}
+
+#annuler{
+    position: absolute;
+    z-index: 1000;
+    left: 50%;
+    bottom: 10%;
+    color: black;
+    background-color: white;
+    padding: 1em;
+    border-radius: 50px;
+    border: 1px solid black;
+    transform: translateX(-50%);
     text-decoration: none;
 }

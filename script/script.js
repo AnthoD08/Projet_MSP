@@ -8,8 +8,8 @@ function startScanner() {
             type: "LiveStream",
             target: document.querySelector('#scanner-container'),
             constraints: {
-                width: 480,
-                height: 320,
+                width: screen.width,
+                height: screen.height,
                 facingMode: "environment"
             },
         },
@@ -91,7 +91,7 @@ function startScanner() {
             if (xhr.status === 200) {
                 window.location.href = "livre/" + result.codeResult.code;
             } else {
-                document.getElementById('message').innerText = "Aucun code détécté"
+                console.log('aucun code');
             }
 
         };

@@ -11,6 +11,8 @@
     <!-- Div to show the scanner -->
     <div id="scanner-container"></div>
 
+    <a id="annuler" href="annuler">Annuler</a>
+
     <!-- Include the image-diff library -->
     <script src="./script/quagga.js"></script>
     <script src="./script/script.js"></script>
