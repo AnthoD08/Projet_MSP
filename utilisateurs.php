@@ -46,14 +46,13 @@ try {
 
     <p>Voici votre tableau de bord.</p>
 
-    <h2>Emprunts en cours</h2>
-
+    <h2>Adherents</h2>
     <ul>
         <?php foreach ($adherents as $emprunt): ?> 
-            <li><?php echo htmlspecialchars($emprunt['date_emprunt']); ?></li>
+            <li><?php echo htmlspecialchars($emprunt['adherent']); ?></li>
         <?php endforeach; ?>
     </ul>
-
+    <h2>Emprunts en cours</h2>
     <ul>
         <?php foreach ($emprunts_en_cours as $emprunt): ?>
             <li><?php echo htmlspecialchars($emprunt['date_emprunt']); ?></li>
