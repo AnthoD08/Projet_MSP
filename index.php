@@ -8,8 +8,8 @@ if (isset($maRoute[0])) {
     switch ($maRoute[0]) {
 
         case "":
-        case "accueil":
-            include("./php/accueil.php");
+        case "connexion":
+            include("./php/connexion.php");
             break;
 
         case "retours":
