@@ -2,7 +2,7 @@
     session_start();
     $_SESSION['user_id'] = 2;
     $route = explode('/', $_GET['route']);
-
+    
     //connexion PDO
     require('./bdd/pdo.php');
     switch ($route[0]){
@@ -19,8 +19,8 @@
             include('./traitement/post-scanner.php');
             break;
 
-        case "retour":
-            include('./traitement/retour.php');
+        case "scan-retour":
+            include('./traitement/scan-retour.php');
             break;
 
         case "entrer-manuelle":
@@ -30,6 +30,12 @@
         case "emprunts":
             include('./traitement/emprunts.php');
             include('./pages/emprunts.php');
+            break;
+
+        case "retours":
+            
+            include('./traitement/retours.php');
+            include('./pages/retours.php');
             break;
 
         case "details":
@@ -43,7 +49,7 @@
             }
             break;
         
-        default: 
+        default : 
             include('./pages/404.html');
             break;
 

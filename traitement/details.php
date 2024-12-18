@@ -24,5 +24,28 @@
             'id' => $route[1],
         ]);
 
-        $details = $AllEmprunts->fetch()
+        $details = $AllEmprunts->fetch();
+
+        if(isset($details['date_retour']) && !empty($details['date_retour'])){
+            $transit = true;
+            $askReceveur = "SELECT identifiant, batiment, etage
+            FROM utilisateurs 
+            INNER JOIN emprunts
+            ON emprunts.receveur = utilisateurs.id
+            INNER JOIN batiments
+            ON batiments.id = utilisateurs.id_batiment
+            INNER JOIN etages
+            ON etages.id = utilisateurs.id_etage
+            WHERE emprunts.id = :id";
+    
+            $receveur = $pdo->prepare($askReceveur);
+            $receveur->execute([
+                'id' => $route[1],
+            ]);
+    
+            $user = $receveur->fetch();
+    
+        }else{
+            $transit = false;
+        }
 ?>

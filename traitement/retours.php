@@ -1,5 +1,5 @@
 <?php
-    $getAllEmprunts = "SELECT emprunts.*, batiments.batiment, livres.titre, etages.etage
+    $getAllRetours = "SELECT emprunts.*, batiments.batiment, livres.titre, etages.etage
     FROM emprunts
     INNER JOIN livres
     ON emprunts.ISBN = livres.id
@@ -14,13 +14,13 @@
     INNER JOIN utilisateurs
     ON utilisateurs.id_batiment = batiments.id
     WHERE utilisateurs.id = :id
-    AND emprunts.date_retour IS NULL";
+    AND emprunts.date_retour IS NOT NULL";
 
-    $allEmprunts = $pdo->prepare($getAllEmprunts);
-    $allEmprunts->execute([
+    $allRetours = $pdo->prepare($getAllRetours);
+    $allRetours->execute([
         'id'=> $_SESSION['user_id'],
     ]);
-    $emprunts = $allEmprunts->fetchAll();
+    $retours = $allRetours->fetchAll();
     
     
 ?>
