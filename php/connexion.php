@@ -11,10 +11,10 @@
 
 <body>
 
-    <?php include('includes/navbar.html'); ?>
+     <?php // include('includes/navbar.html'); ?>
 
     <?php
-    session_start();
+    
     include './db/connexionBDD.php';
 
     // Assurez-vous que la connexion PDO utilise le mode exception
