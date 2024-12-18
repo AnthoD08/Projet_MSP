@@ -17,9 +17,17 @@
         </p>
     </header>
     <main>
-        if(isset($emprunts) && sizeof($emprunts) > 0){
-                    echo $emprunts[0]['batiment'] . " , " . $emprunts[0]['etage'];
+        <?php
+            if(isset($emprunts) && sizeof($emprunts) > 0){
+                foreach($emprunts as $emprunt){
+        ?>
+            <article>
+                <h2><?php ?></h2>
+            </article>
+        <?php
                 }
+            }
+        ?>
     </main>
 </body>
 </html>
