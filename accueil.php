@@ -1,17 +1,19 @@
 <?php
 include 'db.php'; 
-session_start();
+
 if (!isset($_SESSION['user_id'])) {
-    header("Location: connexion.php");
+    header("Location: index.php?page=login");
     exit();
 }
+
 $user_id = $_SESSION['user_id'];
+
 try {
     $stmt = $conn->prepare("SELECT * FROM utilisateurs WHERE id = :id");
     $stmt->bindParam(':id', $user_id);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
     $stmt_utilisateurs = $conn->prepare("SELECT * FROM utilisateurs");
     $stmt_utilisateurs->execute();
     $utilisateurs = $stmt_utilisateurs->fetchAll(PDO::FETCH_ASSOC);
@@ -22,12 +24,11 @@ try {
 
     $stmt_commentaires = $conn->prepare("SELECT * FROM commentaires");
     $stmt_commentaires->execute();
-    $commentaires = $stmt_commentaires->fetchAll(PDO::FETCH_ASSOC);
+    $commentaires = $stmt_commentaires->fetchAll(PDO::FETCH_ASSOC); 
 
-    $stmt_emprunts = $conn->prepare("SELECT * FROM emprunts WHERE id_adherent = :user_id");
-    $stmt_emprunts->bindParam(':user_id', $user_id);
-    $stmt_emprunts->execute();
-    $emprunts_en_cours = $stmt_emprunts->fetchAll(PDO::FETCH_ASSOC);
+    $stmt_genres = $conn->prepare("SELECT * FROM genres");
+    $stmt_genres->execute(); 
+    $genres = $stmt_genres->fetchAll(PDO::FETCH_ASSOC);
   
     $stmt_historique = $conn->prepare("SELECT * FROM emprunts WHERE id_adherent = :user_id");
     $stmt_historique->bindParam(':user_id', $user_id);
@@ -43,7 +44,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> 
     <title>Tableau de Bord</title>
 </head>
 <body>
@@ -67,15 +68,15 @@ try {
             <?php endforeach; ?>
         </ul>
 
-        <h2>Emprunts en cours</h2>
+        <h2 src= 'emprunt.php'>Emprunts en cours</h2>
+        <ul>
+            <?php foreach ($genres as $genre): ?>
+                <li><?php echo htmlspecialchars($genre['genre']); ?></li>
+            <?php endforeach; ?>
+        </ul>
         <details>
             <summary>Détails</summary>
         </details>
-        <ul>
-                <?php foreach ($emprunts_en_cours as $emprunt): ?>
-                    <li><?php echo htmlspecialchars($emprunt['date_emprunt']); ?></li>
-                <?php endforeach; ?>
-            </ul>
 
         <h2>Historique des retours</h2>
         <details>
@@ -94,6 +95,6 @@ try {
     </div>
 </div>
 
-    <script src="scrypt.js"></script>
+<script src="scrypt.js"></script>
 </body>
 </html>

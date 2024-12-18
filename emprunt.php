@@ -1,7 +1,7 @@
 <?php 
 include 'db.php'; 
 
-session_start();
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: connection.php");
     exit();
@@ -15,7 +15,7 @@ try {
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    
+
 
 
 }  catch (PDOException $e) {

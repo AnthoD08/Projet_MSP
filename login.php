@@ -1,11 +1,4 @@
 <?php
-
-include 'db.php'; 
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php?page=login");
-    exit();
-}
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $identifiant = $_POST['identifiant'];
     $mot_de_passe = $_POST['mot_de_passe'];
@@ -21,13 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role_id'] = $user['id_role']; 
 
-        header("Location: accueil.php"); 
+        header("Location: index.php?page=accueil"); 
         exit();
     } else {
         $error = "Identifiant ou mot de passe incorrect.";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -41,20 +35,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
     <?php endif; ?>
     <div class="login-box">
-    <h1>Se connecter</h1>
-    <form action="" method="post">
-        <div class="user-box">
-            <input type="text" name="identifiant" required>
-            <label for="identifiant">Identifiant :</label>
-        </div>
-        <br>
-        <br>
-        <div class="user-box">
-            <input type="password" name="mot_de_passe" required>
-            <label for="mot_de_passe">Mot de passe :</label>
-        </div>
-        <button type="submit">Se connecter</button>
-    </form>
-</div>
+        <h1>Se connecter</h1>
+        <form action="index.php?page=login" method="post">
+            <div class="user-box">
+                <input type="text" name="identifiant" required>
+                <label for="identifiant">Identifiant :</label>
+            </div>
+            <div class="user-box">
+                <input type="password" name="mot_de_passe" required>
+                <label for="mot_de_passe">Mot de passe :</label>
+            </div>
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
 </body>
 </html>
