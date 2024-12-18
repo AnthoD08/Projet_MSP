@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    $_SESSION['user_id'] = 2;
     $route = explode('/', $_GET['route']);
 
     //connexion PDO
@@ -30,8 +32,19 @@
             include('./pages/emprunts.php');
             break;
 
+        case "details":
+            
+            if(isset($route[1]) && is_numeric($route[1])){
+                include('./traitement/details.php');
+                include('./pages/details.php');
+            }else{
+                include('./traitement/emprunts.php');
+                include('./pages/emprunts.php');
+            }
+            break;
+        
         default: 
-            include('./page/404.html');
+            include('./pages/404.html');
             break;
 
 

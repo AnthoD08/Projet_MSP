@@ -7,7 +7,7 @@
 <body>
     <?php include('./traitement/livre-info.php') ?>
 
-    <main>
+    <main class="table">
         <a id="back" href="./scanner">Retour</a>
 
         <h1><?php echo $data['titre'] ?></h1>
