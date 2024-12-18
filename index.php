@@ -21,6 +21,19 @@
             include('./traitement/retour.php');
             break;
 
+        case "entrer-manuelle":
+            include('./pages/manuelle.php');
+            break;
+
+        case "emprunts":
+            include('./traitement/emprunts.php');
+            include('./pages/emprunts.php');
+            break;
+
+        default: 
+            include('./page/404.html');
+            break;
+
 
     }
 ?>

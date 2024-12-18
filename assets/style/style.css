@@ -31,11 +31,15 @@ table tbody tr:nth-child(odd) td {
     color: white;
     text-decoration: none;
     margin: 1em;
+    top: 0.5em;
+    left: 0.5em;
 }
-
-#annuler{
+.scanBtn{
     position: absolute;
     z-index: 1000;
+
+}
+#manuel {
     left: 50%;
     bottom: 10%;
     color: black;
@@ -45,4 +49,33 @@ table tbody tr:nth-child(odd) td {
     border: 1px solid black;
     transform: translateX(-50%);
     text-decoration: none;
+    text-align: center;
+}
+
+#formManu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 60%;
+    left: 50%;
+    
+}
+#formManu button{
+    width: fit-content;
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 15px;
+}
+
+#titreManu{
+    top: 30%;
+    left: 50%;
+}
+
+
+#formManu, #titreManu{
+    transform: translate(-51%, -50%);
+    position: absolute;
 }

@@ -8,7 +8,7 @@
     <?php include('./traitement/livre-info.php') ?>
 
     <main>
-        <a id="back" href="./scanner">< Retour</a>
+        <a id="back" href="./scanner">Retour</a>
 
         <h1><?php echo $data['titre'] ?></h1>
 
@@ -22,10 +22,6 @@
                 <td>ISBN</td>
                 <td><?php echo $route[1] ?></td>
             </tr>
-            <!-- <tr>
-                <td>N° Exemplaire</td>
-                <td><?php //echo $data[''] ?></td>
-            </tr> -->
             <tr>
                 <td>Emprunté le </td>
                 <td><?php echo $data['date_emprunt'] ?></td>

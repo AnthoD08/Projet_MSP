@@ -39,7 +39,7 @@
     }else{
         $transit = false;
     }
-
+    
     if(!isset($data) || empty($data)){
         header('Location: ../scanner');
     }
