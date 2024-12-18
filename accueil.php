@@ -70,12 +70,12 @@ try {
         <h2>Emprunts en cours</h2>
         <details>
             <summary>Détails</summary>
-            <ul>
+        </details>
+        <ul>
                 <?php foreach ($emprunts_en_cours as $emprunt): ?>
                     <li><?php echo htmlspecialchars($emprunt['date_emprunt']); ?></li>
                 <?php endforeach; ?>
             </ul>
-        </details>
 
         <h2>Historique des retours</h2>
         <details>
