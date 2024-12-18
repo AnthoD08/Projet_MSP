@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php include('./include/head.html') ?>
+    <?php include('./includes/head.html') ?>
     <title>Entrer manuelle</title>
 </head>
 <body>
@@ -9,7 +9,7 @@
 
         <a id="back" class="scanBtn" href="">Annuler</a>
 
-        <h1 id="titreManu">Entrer un code ISBN manuellement</h1>
+        <h1 id="titreManu" class="title-center">Entrer un code ISBN manuellement</h1>
         <form id="formManu">
             <label for="ISBN">ISBN : </label>
             <input type="number" id="ISBN" name="ISBN">

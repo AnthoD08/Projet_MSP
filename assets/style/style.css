@@ -122,3 +122,134 @@ h2{
 .table p{
     font-weight: bold;
 }
+
+/* style anthony  */
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+   
+  }
+  
+  .navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    z-index: 999;
+    padding-block: 10px;
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.07);
+  }
+  
+  .boxed {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .space-between {
+    justify-content: space-between;
+  }
+  
+  .header-menu {
+   
+    display: flex;
+    align-items: center;
+    list-style: none;
+  }
+  
+  .header-menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: 0.2s ease;
+  }
+  
+  .header-logo {
+    display: block;
+  }
+  
+  .header-logo img {
+    width: 70px;
+  }
+  
+  .aligncenter {
+    align-items: center;
+  }
+  
+  .header-menu li a:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .slider {
+    width: 100%;
+    min-height: 80vh;
+    aspect-ratio: 16/9;
+    position: relative;
+  }
+  .slider img {
+    width: 100%;
+  }
+  
+  .slider-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+  }
+  
+  .slider-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .accueil-title {
+    text-align: center;
+    padding-top: 120px;
+    color: white;
+  }
+  
+  
+  .bouton-deconnexion {
+    text-align: center;
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 20px;
+    padding-top: 100px;
+  }
+  
+  .bouton-deconnexion:hover {
+    text-decoration: underline;
+  }
+  
+  .logout-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000; 
+  }
+
+  .connexion{
+    background: url("../images/bibliotheque.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
+  }

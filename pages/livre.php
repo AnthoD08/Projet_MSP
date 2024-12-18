@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php include('./include/head.html') ?>
+    <?php include('./includes/head.html') ?>
     <title>Livres</title>
 </head>
 <body>
-    <?php include('./traitement/livre-info.php') ?>
+    <?php include('./traitement/scan-livre-info.php') ?>
 
     <main class="table">
         <a id="back" href="./scanner">Retour</a>
@@ -20,7 +20,7 @@
         <table>
             <tr>
                 <td>ISBN</td>
-                <td><?php echo $route[1] ?></td>
+                <td><?php echo $maroute[1] ?></td>
             </tr>
             <tr>
                 <td>Emprunté le </td>
@@ -46,15 +46,15 @@
 
         <?php if($data['semaine'] != 4){ ?>
 
-            <form action="retour" method="post">
-                <input type="hidden" name="renew" id="renew" value="<?php echo $route[1] ?>">
+            <form action="scan-retour" method="post">
+                <input type="hidden" name="renew" id="renew" value="<?php echo $maroute[1] ?>">
                 <button type="submit">Renouveler emprunt</button>
             </form>
         
         <?php } ?>
 
-        <form action="retour" method="post">
-            <input type="hidden" name="retour" id="retour" value="<?php echo $route[1] ?>">
+        <form action="scan-retour" method="post">
+            <input type="hidden" name="retour" id="retour" value="<?php echo $maroute[1] ?>">
             <button type="submit">Retourner le livre</button>
         </form>
         <?php
@@ -64,12 +64,8 @@
             <table>
                 <tr>
                     <td>ISBN</td>
-                    <td><?php echo $route[1] ?></td>
+                    <td><?php echo $maroute[1] ?></td>
                 </tr>
-                <!-- <tr>
-                    <td>N° Exemplaire</td>
-                    <td><?php //echo $data[''] ?></td>
-                </tr> -->
                 <tr>
                     <td>Rendu le </td>
                     <td><?php echo $data['date_retour'] ?></td>

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php include('./include/head.html') ?>
+    <?php include('./includes/head.html') ?>
     <title>Retours</title>
 </head>
 <body>
+<?php include('./traitement/retours.php'); ?>
     <header>
-        <a id="back" href="retours">retour</a>
+        <a id="back" href="accueil">retour</a>
         <div>
             <h1>Retours</h1>
             <p>Batiment : 
-                <?php
-                    if(isset($retours) && sizeof($retours) > 0){
-                        echo $retours[0]['batiment'] . " / " . $retours[0]['etage'];
+            <?php
+                    if(isset($batiment) && !empty($batiment)){
+                        echo $batiment['batiment'] . " / " . $batiment['etage'];
                     }
                 ?>
             </p>

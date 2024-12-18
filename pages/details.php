@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php include('./include/head.html') ?>
+    <?php include('./includes/head.html') ?>
     <title>Détails</title>
 </head>
 <body>
     <main class="table">
-        <a id="back" href="emprunts">Retour</a>
+        <a id="back" href="accueil">Retour</a>
         <h1><?php echo $details['titre'] ?></h1>
         <p><?php echo $details['resume'] ?></h2>
         <?php

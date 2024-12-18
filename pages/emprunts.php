@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php include('./include/head.html') ?>
+    <?php include('./includes/head.html') ?>
     <title>Emprunts en cour</title>
 </head>
 <body>
     <header>
-        <a id="back" href="">retour</a>
+        <a id="back" href="accueil">retour</a>
         <div>
             <h1>Emprunts</h1>
             <p>Batiment : 
                 <?php
-                    if(isset($emprunts) && sizeof($emprunts) > 0){
-                        echo $emprunts[0]['batiment'] . " / " . $emprunts[0]['etage'];
+                    if(isset($batiment) && !empty($batiment)){
+                        echo $batiment['batiment'] . " / " . $batiment['etage'];
                     }
                 ?>
             </p>

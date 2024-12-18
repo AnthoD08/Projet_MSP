@@ -1,4 +1,6 @@
+
 function postScan(code){
+    console.log("quagga");
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'post-scanner', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

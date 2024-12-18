@@ -4,7 +4,7 @@
 <head>
     <title>Scanner</title>
     <script src="https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js"></script>
-    <?php include('./include/head.html') ?>
+    <?php include('./includes/head.html') ?>
 </head>
 
 <body>
@@ -16,6 +16,7 @@
 
     <!-- Include the image-diff library -->
     <script src="./script/quagga.js"></script>
+
     <script src="./script/script.js"></script>
     <script src="./script/ajax.js"></script>
 </body>

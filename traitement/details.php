@@ -21,7 +21,7 @@
 
         $AllEmprunts = $pdo->prepare($getAllEmprunts);
         $AllEmprunts->execute([
-            'id' => $route[1],
+            'id' => $maroute[1],
         ]);
 
         $details = $AllEmprunts->fetch();
@@ -31,7 +31,7 @@
             $askReceveur = "SELECT identifiant, batiment, etage
             FROM utilisateurs 
             INNER JOIN emprunts
-            ON emprunts.receveur = utilisateurs.id
+            ON emprunts.receveur = utilisateurs.id_utilisateur
             INNER JOIN batiments
             ON batiments.id = utilisateurs.id_batiment
             INNER JOIN etages
@@ -40,7 +40,7 @@
     
             $receveur = $pdo->prepare($askReceveur);
             $receveur->execute([
-                'id' => $route[1],
+                'id' => $maroute[1],
             ]);
     
             $user = $receveur->fetch();

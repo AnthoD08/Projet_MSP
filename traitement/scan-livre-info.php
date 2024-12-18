@@ -15,23 +15,22 @@
 
     $livre = $pdo -> prepare($infoLivres);
     $livre->execute([
-        'isbn' => $route[1],
+        'isbn' => $maroute[1],
     ]);
     $data = $livre->fetch();
-
     if(isset($data['date_retour']) && !empty($data['date_retour'])){
         $transit = true;
         $askReceveur = 'SELECT identifiant 
         FROM utilisateurs 
         INNER JOIN emprunts 
-        ON emprunts.receveur = utilisateurs.id 
+        ON emprunts.receveur = utilisateurs.id_utilisateur
         INNER JOIN livres 
         ON livres.id = emprunts.ISBN 
         WHERE livres.ISBN = :isbn';
 
         $receveur = $pdo->prepare($askReceveur);
         $receveur->execute([
-            'isbn' => $route[1],
+            'isbn' => $maroute[1],
         ]);
 
         $user = $receveur->fetch();
