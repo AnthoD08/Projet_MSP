@@ -78,7 +78,7 @@ try {
             <summary>Détails</summary>
         </details>
 
-        <h2>Historique des retours</h2>
+        <h2><a href="historiqueretour.php">Historique des retours</a></h2>
         <details>
             <summary>Détails</summary>
             <ul>
