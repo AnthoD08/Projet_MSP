@@ -1,194 +1,69 @@
-html {
-    height: 100%;
-  }
-  
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  .login-box {
-    width: 400px;
-    padding: 40px;
-    background: rgba(0, 0, 0, 0.7);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    color: #fff;
-  }
-  
-  .login-box h1 {
-    margin: 0 0 30px;
-    text-align: center;
-    color: #03e9f4;
-  }
-  
-  .user-box {
-    position: relative;
-    margin-bottom: 30px;
-  }
-  
-  .user-box input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
-  }
-  
-  .user-box label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: 0.5s;
-  }
-  
-  .user-box input:focus ~ label,
-  .user-box input:valid ~ label {
-    top: -20px;
-    left: 0;
-    color: #03e9f4;
-    font-size: 12px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background: #03e9f4;
-    border: none;
-    border-radius : 5px;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  button:hover {
-    background: #0291b5;
-  }
-  
-  p {
-    text-align: center;
-    margin-top: 20px;
-    color: red;
-  }
 
-  /* utilisateur */
-
-  li {
-    background-color: #fff;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.login-box {
+    background-color: #fff; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    width: 300px; 
 }
 
-/* Conteneur principal */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin-bottom: 50px;
+
+.login-box h1 {
+    text-align: center; 
+    margin-bottom: 20px; 
 }
 
-/* Interface Scanner */
-#scanner-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 40px;
+
+.user-box {
+    position: relative; 
+    margin-bottom: 20px; 
 }
 
-#scanner {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 20px;
+.user-box input {
+    width: 100%; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 16px; 
 }
 
-#result {
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
+
+.user-box label {
+    position: absolute; 
+    left: 10px; 
+    top: 10px; 
+    transition: 0.2s; 
+    color: #999; 
 }
 
-/* Styles pour les boutons et champs de texte */
+
+.user-box input:focus + label,
+.user-box input:not(:placeholder-shown) + label {
+    top: -10px; 
+    left: 10px; 
+    font-size: 12px; 
+    color: #333; 
+}
+
+
 button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    width: 100%; 
+    padding: 10px;
+    background-color: #5cb85c; 
+    border: none; 
+    border-radius: 4px; 
+    color: white; 
     font-size: 16px;
+    cursor: pointer; 
+    transition: background-color 0.3s; 
 }
+
 
 button:hover {
-    background-color: #45a049;
+    background-color: #4cae4c; 
 }
 
-input[type="text"] {
-    width: 300px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-    font-size: 16px;
-}
 
-/* Responsivité */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    #scanner {
-        max-width: 100%;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
-
-    li {
-        padding: 10px;
-    }
-}
-
-/*  */
-#scanner-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 40px;
-}
-#scanner {
-    width: 100%;
-    max-width: 500px;
-    margin-bottom: 10px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-}
-#result {
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: bold;
+p {
+    text-align: center; 
+    margin-top: 10px; 
 }

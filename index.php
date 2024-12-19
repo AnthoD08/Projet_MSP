@@ -1,26 +1,36 @@
 <?php
-include 'db.php'; 
+session_start();
+include 'db.php';
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $identifiant = $_POST['identifiant'];
-    $mot_de_passe = $_POST['mot_de_passe'];
+
+$page = 'login';
+
+
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
 }
-
-$sql = "SELECT * FROM utilisateurs"; 
-$result = $conn->query($sql); 
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"] . " - Identifiant: " . $row["identifiant"] . "<br>"; 
-    }
-} else {
-    echo "0 results"; 
+switch ($page) {
+    case 'login':
+        include 'login.php';
+        break;
+    case 'accueil':
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: index.php?page=login");
+            exit();
+        }
+        include 'accueil.php';
+        break;
+    case 'deconnexion':
+        session_destroy();
+        header("Location: index.php?page=login");
+        exit();
+    default:
+        include 'login.php';
+        break;
 }
-
-$conn->close(); 
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,21 +38,6 @@ $conn->close();
     <title>Document</title>
 </head>
 <body>
-    <h1>Bibliothèque de Baillac</h1>
-    <form action="">
-        <label for="">Identification</label>
-        <input type="text" name="identifiant" required>
-        <br>
-        <label for="">Mot de passe</label>
-        <input type="password" name="mot_de_passe" required>
-        <br>
-        <h4>Mémoriser l'identifiant</h4>
-        <label class="switch">
-            <input type="checkbox" name="remember">
-            <span class="slider round"></span>
-        </label>
-        <button type="submit">Connexion</button>
-    </form>
-    <script src="scrypt.js"></script>
+    
 </body>
 </html>
